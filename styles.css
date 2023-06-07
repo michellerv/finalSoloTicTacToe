@@ -30,14 +30,15 @@ main {
     width: 30%;
 }
 
-.player-1, 
-.player-2 {
-
+.player-one, 
+.player-two {
+    border: 2px solid green;
 }
 
 .player1-wins, 
-.player-2.wins{
-
+.player2-wins {
+    border: 2px solid black;
+    height: 12dvh;
 }
 
 .game-board {
