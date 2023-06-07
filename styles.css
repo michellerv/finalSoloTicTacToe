@@ -6,7 +6,7 @@ body {
     background-image: url();
     display: flex;
     margin: 0px;
-    height: 95vh;
+    height: 97vh;
     width: 95vw;
     flex-direction: column;
 }
@@ -31,6 +31,13 @@ main {
     width: 30%;
 }
 
+.fire {
+    background-image:linear-gradient(maroon, red, orangered, orange, yellow);
+}
+
+.water {
+    background-image: linear-gradient(#002D62, #0039a6, #1F75FE, #0CAFFF, #00BFFF);
+}
 .player-one, 
 .player-two {
     border: 2px solid green;
@@ -40,6 +47,7 @@ main {
 .player2-wins {
     border: 2px solid black;
     height: 12dvh;
+    background:transparent;
 }
 
 .game-board {
@@ -54,7 +62,6 @@ main {
 }
 
 h1 {
-    border: 1px solid red;
     background-color: black; 
     color: white;
     font-size: xx-large;
