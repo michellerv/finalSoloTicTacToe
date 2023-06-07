@@ -9,6 +9,7 @@ body {
     width: 95vw;
     flex-direction: column;
 }
+
 main {
     height: 100%;
     width: 100vw;
@@ -16,12 +17,7 @@ main {
     display: flex;
     border: 2px solid blue;
     flex-direction: row;
-    /* flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: flex-start;
-    align-content: flex-start; */
 }
-
 
 .sidebar {
     border: 1px solid yellow;
@@ -62,8 +58,8 @@ h1 {
 
 .board-grid {
     /* grid-template-columns: repeat(3, 1fr);
-border: solid orange;
-grid-gap: 0px;
-padding: 20px;
-margin-top: 20px; */
+    border: solid orange;
+    grid-gap: 0px;
+    padding: 20px;
+    margin-top: 20px; */
 }
