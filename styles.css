@@ -3,6 +3,7 @@
 }
 
 body {
+    background-image: url();
     display: flex;
     margin: 0px;
     height: 95vh;
@@ -54,7 +55,12 @@ main {
 
 h1 {
     border: 1px solid red;
-    height: 30%;
+    background-color: black; 
+    color: white;
+    font-size: xx-large;
+    background-image: url(assets/360_F_139224274_G5Ltki2396FHjGMJHRahmUjAD7NwA9RH.jpg);
+    height: 50%;
+    margin: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -62,15 +68,15 @@ h1 {
 }
 
 .board-grid {
-    border: solid orange;
     height: 70%;
     display: grid;
     grid-template-columns: repeat(3, 3fr);
     grid-gap: 0px;
     padding: 20px;
-    margin-top: 20px;
+    background-color: black;
 }
 
 .box {
     border: 1px solid purple;
+    color: white;
 }
