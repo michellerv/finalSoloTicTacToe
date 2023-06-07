@@ -3,29 +3,67 @@
 }
 
 body {
+    display: flex;
     margin: 0px;
+    height: 95vh;
+    width: 95vw;
+    flex-direction: column;
 }
 main {
-    height: 100dvh;
+    height: 100%;
+    width: 100vw;
     margin: 0px;
     display: flex;
     border: 2px solid blue;
     flex-direction: row;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap;
     justify-content: space-around;
     align-items: flex-start;
-    align-content: flex-start;
+    align-content: flex-start; */
 }
 
-section {
-    border: 2px solid pink;
-    height: 100%;
-    width: 30%;
+
+.sidebar {
+    border: 1px solid yellow;
+    padding-top: 6dvh;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
+    width: 30%;
+}
+
+.player-1, 
+.player-2 {
+
+}
+
+.player1-wins, 
+.player-2.wins{
+
+}
+
+.game-board {
+    margin: 0px;
+    border: 2px solid pink;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 40%;
+   
+}
+
+h1 {
+    padding-top: 10dvh;
     
 }
 
+.board-grid {
+    /* grid-template-columns: repeat(3, 1fr);
+border: solid orange;
+grid-gap: 0px;
+padding: 20px;
+margin-top: 20px; */
+}
