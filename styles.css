@@ -3,7 +3,21 @@
 }
 
 body {
-    display: flex;
-
-   
+    margin: 0px;
 }
+main {
+    height: 100dvh;
+    margin: 0px;
+    display: flex;
+    border: 2px solid blue;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+section {
+    
+}
+
