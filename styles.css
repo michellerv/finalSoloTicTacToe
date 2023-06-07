@@ -41,6 +41,7 @@ main {
 .player-one, 
 .player-two {
     border: 2px solid green;
+    color: white;
 }
 
 .player1-wins, 
@@ -48,6 +49,7 @@ main {
     border: 2px solid black;
     height: 12dvh;
     background:transparent;
+    color:white;
 }
 
 .game-board {
