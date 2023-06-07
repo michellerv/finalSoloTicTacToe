@@ -3,10 +3,7 @@
 }
 
 body {
-    display: grid;
-    border-color: blue;
-    height: 100 dvh;
-    grid-template-columns: 1fr, 2fr, 1fr;
+    display: flex;
 
    
 }
