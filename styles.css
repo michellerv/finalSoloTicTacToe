@@ -16,12 +16,10 @@ main {
     width: 100vw;
     margin: 0px;
     display: flex;
-    border: 2px solid blue;
     flex-direction: row;
 }
 
 .sidebar {
-    border: 1px solid yellow;
     padding-top: 6dvh;
     display: flex;
     flex-direction: column;
@@ -40,7 +38,6 @@ main {
 }
 .player-one, 
 .player-two {
-    border: 2px solid green;
     color: white;
 }
 
@@ -86,6 +83,5 @@ h1 {
 }
 
 .box {
-    border: 1px solid purple;
     color: white;
 }
