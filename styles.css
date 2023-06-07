@@ -5,8 +5,8 @@
 body {
     display: flex;
     margin: 0px;
-    height: 97vh;
-    width: 95vw;
+    height: 100dvh;
+    width: 95dvw;
     flex-direction: column;
 }
 
@@ -62,7 +62,8 @@ h1 {
     background-color: black; 
     color: white;
     font-size: xx-large;
-    background-image: url(assets/360_F_139224274_G5Ltki2396FHjGMJHRahmUjAD7NwA9RH.jpg);
+    background-image: url(assets/istockphoto-457148881-612x612.jpg);
+    background-size:cover;
     height: 50%;
     margin: 0px;
     display: flex;
