@@ -45,21 +45,31 @@ main {
     border: 2px solid pink;
     height: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     width: 40%;
    
 }
 
 h1 {
-    padding-top: 10dvh;
-    
+    border: 1px solid red;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
 }
 
 .board-grid {
-    /* grid-template-columns: repeat(3, 1fr);
     border: solid orange;
+    height: 70%;
+    display: grid;
+    grid-template-columns: repeat(3, 3fr);
     grid-gap: 0px;
     padding: 20px;
-    margin-top: 20px; */
+    margin-top: 20px;
+}
+
+.box {
+    border: 1px solid purple;
 }
