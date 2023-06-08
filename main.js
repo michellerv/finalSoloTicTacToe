@@ -2,11 +2,21 @@
 // Query selectors
 
 var turnBanner = document.querySelector('.announcements');
+var box1 = document.querySelector('.box1');
+var box2 = document.querySelector('.box2');
+var box3 = document.querySelector('.box3');
+var box4 = document.querySelector('.box4');
+var box5 = document.querySelector('.box5');
+var box6 = document.querySelector('.box6');
+var box7 = document.querySelector('.box7');
+var box8 = document.querySelector('.box8');
+var box9 = document.querySelector('.box9');
 
 // Event listeners
 
 window.addEventListener('load', displayTurn);
 
+box1.addEventListener('click', displayToken);
 
 
 //functions
@@ -28,8 +38,6 @@ var players = [firePlayer, waterPlayer];
 // Function(s) to display the game board and user data
 
 function displayTurn() {
-    console.log('this is players', players)
-    console.log(turnBanner)
     for (var i = 0; i < players.length; i++) {
         if (players[i].turn) {
             turnBanner.innerHTML += 
@@ -38,6 +46,14 @@ function displayTurn() {
     }
 }
 
+function displayToken() {
+    for (var i = 0; i < players.length; i++) {
+        if (players[i].turn) {
+            box1.innerHTML += 
+            `${players[i].token}`
+        }
+    }
+}
 // A function that creates the objects that store each players’ informations - properties should include: id (ex: 'one'), token (ex: '⭐️'), wins (ex: 0)
 
 function increaseWins(players) {
