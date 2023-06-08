@@ -31,6 +31,16 @@ function increaseWins(players) {
 
 // A function called increaseWins - increases the count of a player’s wins (should work for either player)
 
+function createGameBoard() {
+    for (var i = 1; i < 10; i++) {
+        gameBoardBoxes.push({
+            boxNum: i,
+            occuppied: false,
+        })
+    }
+}
+var gameBoardBoxes = [];
+console.log(gameBoard)
 
 // A function that keeps track of the data for the game board
 // A function that keeps track of which player’s turn it currently is
