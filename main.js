@@ -50,13 +50,35 @@ function trackTurn(players) {
     }
 }
 
-
 // A function that keeps track of which player’s turn it currently is
 
+function playerWin(gameBoardBoxes) {
+    for (var i = 0; i <  gameBoardBoxes.length; i++) {
+        if (gameBoardBoxes[0,1,2].occupied) {
+            //that player wins- how to connect game board to player
+        } else if (gameBoardBoxes[3, 4, 5].occupied) {
+            // ''
+        } else if (gameBoardBoxes[6, 7, 8].occupied) {
+            // ''
+        } else if (gameBoardBoxes[0, 4, 8].occupied) {
+            //  ''
+        } else if (gameBoardBoxes[2, 4, 6].occupied) {
+            //''
+        } else if (gameBoardBoxes[0, 3, 6].occupied) {
+            // ''
+        } else if (gameBoardBoxes[1, 4, 7].occupied) {
+            // ''
+        } else if (gameBoardBoxes[2, 5, 8].occupied) {
+            // ''
+        }
+    }
+}
 
 
 // A function that checks the game board data for win conditions
+
 // A function that detects when a game is a draw (no one has won)
+
 // A function that resets the game board’s data to begin a new game
 
 
