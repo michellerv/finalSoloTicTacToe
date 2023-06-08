@@ -30,6 +30,8 @@ function increaseWins(players) {
 }
 
 // A function called increaseWins - increases the count of a player’s wins (should work for either player)
+
+
 // A function that keeps track of the data for the game board
 // A function that keeps track of which player’s turn it currently is
 // A function that checks the game board data for win conditions
