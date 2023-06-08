@@ -13,7 +13,6 @@ body {
 main {
     height: 100%;
     width: 100vw;
-    margin: 0px;
     display: flex;
     flex-direction: row;
 }
@@ -49,7 +48,6 @@ main {
 }
 
 .game-board {
-    margin: 0px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -60,8 +58,8 @@ main {
 .header {
     background-image: url(assets/istockphoto-457148881-612x612.jpg);
     background-size:cover;
+    transform: scaleX(-1);
     height: 50%;
-    margin: 0px;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -70,6 +68,7 @@ main {
 
 h1 {
     background-color: black; 
+    transform: scaleX(-1);
     color: whitesmoke;
     font-size: xx-large;
     opacity: .85;
@@ -82,7 +81,9 @@ h1 {
     display: grid;
     grid-template-columns: repeat(3, 3fr);
     grid-gap: 0px;
-    padding: 20px;
+    padding: 40px;
+    padding-left: 15dvh;
+    padding-right: 15dvh;
     background-color: black;
 }
 
@@ -90,26 +91,18 @@ h1 {
     color: white;
 }
 
-.box2 {
-    border-left: 3px solid white;
-    border-right: 3px solid white;
+.box2, 
+.box8 {
+    border-left: 4px solid white;
+    border-right: 4px solid white;
 }
 
-.box4 {
-    border-top: 3px solid white;
-    border-bottom: 3px solid white;
+.box4, 
+.box6 {
+    border-top: 4px solid white;
+    border-bottom: 4px solid white;
 }
 
 .box5 {
-    border: 3px solid white;
+    border: 4px solid white;
 }
-
-.box6 {
-    border-top: 3px solid white;
-    border-bottom: 3px solid white;
-}
-
-.box8 {
-    border-left: 3px solid white;
-    border-right: 3px solid white;
- }
