@@ -60,6 +60,7 @@ main {
 .header {
     background-image: url(assets/istockphoto-457148881-612x612.jpg);
     background-size:cover;
+    transform: scaleX(-1);
     height: 50%;
     margin: 0px;
     display: flex;
@@ -70,6 +71,7 @@ main {
 
 h1 {
     background-color: black; 
+    transform: scaleX(-1);
     color: whitesmoke;
     font-size: xx-large;
     opacity: .85;
