@@ -41,15 +41,23 @@ function selectBox(event) {
     var eventTargetClass = event.target.className
     for (var i = 0; i < boxes.length; i++) {
         if(boxes[i].className === eventTargetClass) {
-            console.log(boxes[i].className)
-           gameBoardBoxes.push(boxes[i])
+           stopRepeats(boxes[i]) 
+        //    gameBoardBoxes.push(box[i]);
         }
     }
     return gameBoardBoxes
 }
 
+function stopRepeats(box) {
+    if (gameBoardBoxes.includes(box)) {
+        return 
+    }
+    gameBoardBoxes.push(box)
+} 
+
 function displayToken() {
     var selectedBox = gameBoardBoxes[gameBoardBoxes.length -1];
+    // var selectedBox = gameBoardBoxes[gameBoardBoxes.length];
     for (var i = 0; i < players.length; i++) {
         if (players[i].turn) {
             selectedBox.innerHTML += 
@@ -75,9 +83,7 @@ function displayTurn() {
     }    
 }
  
-// function stopRepeats() {
-//     
-// }
+
 
 // A function that creates the objects that store each players’ informations - properties should include: id (ex: 'one'), token (ex: '⭐️'), wins (ex: 0)
 
