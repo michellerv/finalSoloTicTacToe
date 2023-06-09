@@ -17,6 +17,14 @@ var box9 = document.querySelector('.box9');
 window.addEventListener('load', displayTurn);
 
 box1.addEventListener('click', displayToken);
+box2.addEventListener('click', displayToken);
+box3.addEventListener('click', displayToken);
+box4.addEventListener('click', displayToken);
+box5.addEventListener('click', displayToken);
+box6.addEventListener('click', displayToken);
+box7.addEventListener('click', displayToken);
+box8.addEventListener('click', displayToken);
+box9.addEventListener('click', displayToken);
 
 
 //functions
@@ -40,10 +48,18 @@ var players = [firePlayer, waterPlayer];
 function displayTurn() {
     for (var i = 0; i < players.length; i++) {
         if (players[i].turn) {
-            turnBanner.innerHTML += 
+            turnBanner.innerHTML = 
             `It\'s ${players[i].token}\'s turn!`
-        }
+            console.log('displayed turn', players[i].token)
+        } 
+    }    
+}
+
+function changeTurn(players) {
+    for (var i = 0; i < players.length; i++) {
+        players[i].turn = !players[i].turn;
     }
+    displayTurn();
 }
 
 function displayToken() {
@@ -52,7 +68,7 @@ function displayToken() {
             box1.innerHTML += 
             `${players[i].token}`
         }
-    }
+    }    changeTurn(players)
 }
 // A function that creates the objects that store each players’ informations - properties should include: id (ex: 'one'), token (ex: '⭐️'), wins (ex: 0)
 
@@ -78,11 +94,7 @@ var gameBoardBoxes = [];
 
 // A function that keeps track of the data for the game board
 
-function trackTurn(players) {
-    for (var i = 0; i < players.length; i++) {
-        players[i].turn = !players[i].turn;
-    }
-}
+
 
 // A function that keeps track of which player’s turn it currently is
 
