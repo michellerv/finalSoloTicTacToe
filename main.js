@@ -23,7 +23,6 @@ var waterPlayer = createPlayer('water', 2, '💧', 0, false);
 
 var players = [firePlayer, waterPlayer];
 
-// var gameBoardBoxes = [];
 var selectedBox;
 
 
@@ -47,7 +46,6 @@ function selectBox(event) {
     var eventTargetClass = event.target.className
     for (var i = 0; i < boxes.length; i++) {
         if(boxes[i].className === eventTargetClass) {
-        //    stopRepeats(boxes[i]);
            return boxes[i]
         }
     }    
