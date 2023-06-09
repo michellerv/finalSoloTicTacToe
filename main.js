@@ -56,13 +56,13 @@ window.addEventListener('load', displayTurn);
 
 // Function(s) to display the game board and user data
 
-function displayTurn() {
+function displayToken(boxNum) {
     for (var i = 0; i < players.length; i++) {
         if (players[i].turn) {
-            turnBanner.innerHTML = 
-            `It\'s ${players[i].token}\'s turn!`
-        } 
-    }    
+            boxNum.innerHTML += 
+            `${players[i].token}`
+        }
+    }    changeTurn(players)
 }
 
 function changeTurn(players) {
@@ -72,14 +72,26 @@ function changeTurn(players) {
     displayTurn();
 }
 
-function displayToken(boxNum) {
+function displayTurn() {
     for (var i = 0; i < players.length; i++) {
         if (players[i].turn) {
-            boxNum.innerHTML += 
-            `${players[i].token}`
-        }
-    }    changeTurn(players)
+            turnBanner.innerHTML = 
+            `It\'s ${players[i].token}\'s turn!`
+        } 
+    }    
 }
+
+
+function stopRepeats() {
+    for (var i = 0; i < gameBoardBoxes.length; i++) {
+        if(gameBoardBoxes[i].occupied) {
+           return displayToken()
+        } else {
+            return
+        }
+    }   
+}
+
 // A function that creates the objects that store each players’ informations - properties should include: id (ex: 'one'), token (ex: '⭐️'), wins (ex: 0)
 
 function increaseWins(players) {
