@@ -77,13 +77,7 @@ function displayTurn() {
 }
  
 // function stopRepeats() {
-//     for (var i = 0; i < gameBoardBoxes.length; i++) {
-//         if(gameBoardBoxes[i].occupied) {
-//            return displayToken()
-//         } else {
-//             return
-//         }
-//     }   
+//     
 // }
 
 // A function that creates the objects that store each players’ informations - properties should include: id (ex: 'one'), token (ex: '⭐️'), wins (ex: 0)
@@ -97,6 +91,7 @@ function increaseWins(players) {
 
 // A function called increaseWins - increases the count of a player’s wins (should work for either player)
 
+//Use?
 // function createGameBoard() {
 //     for (var i = 1; i < 10; i++) {
 //         gameBoardBoxes.push({
