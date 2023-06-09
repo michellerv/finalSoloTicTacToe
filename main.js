@@ -7,12 +7,21 @@ var boardGrid = document.querySelector('.board-grid');
 
 // Event listeners
 
+
 window.addEventListener('load', displayTurn);
 boardGrid.addEventListener('click', function(event) {
-    selectBox(event);
+    selectedBox = selectBox(event);
+    addMoves(selectedBox);
     displayToken(event);
 });
 
+var firePlayer = createPlayer('fire', 1, '🔥', 0, true);
+var waterPlayer = createPlayer('water', 2, '💧', 0, false);
+
+var players = [firePlayer, waterPlayer];
+
+var gameBoardBoxes = [];
+var selectedBox;
 
 
 //functions
@@ -23,17 +32,11 @@ function createPlayer(name, id, token, wins, turn) {
         token: token,
         wins: wins,
         turn: turn,
+        moves: []
     }
 }
 
-var firePlayer = createPlayer('fire', 1, '🔥', 0, true);
-var waterPlayer = createPlayer('water', 2, '💧', 0, false);
 
-var players = [firePlayer, waterPlayer];
-
- var gameBoardBoxes = [];
-
-window.addEventListener('load', displayTurn);
 
 // Function(s) to display the game board and user data
 
@@ -41,11 +44,10 @@ function selectBox(event) {
     var eventTargetClass = event.target.className
     for (var i = 0; i < boxes.length; i++) {
         if(boxes[i].className === eventTargetClass) {
-           stopRepeats(boxes[i]) 
-        //    gameBoardBoxes.push(box[i]);
+           stopRepeats(boxes[i]);
+           return boxes[i]
         }
-    }
-    return gameBoardBoxes
+    }    
 }
 
 function stopRepeats(box) {
@@ -55,9 +57,14 @@ function stopRepeats(box) {
     gameBoardBoxes.push(box)
 } 
 
+function addMoves(box) {
+    for (var i = 0; i < players.length; i++) {
+        players[i].moves.push(box)
+    }
+}
+
 function displayToken() {
     var selectedBox = gameBoardBoxes[gameBoardBoxes.length -1];
-    // var selectedBox = gameBoardBoxes[gameBoardBoxes.length];
     for (var i = 0; i < players.length; i++) {
         if (players[i].turn) {
             selectedBox.innerHTML += 
