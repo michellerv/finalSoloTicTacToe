@@ -3,15 +3,15 @@
 
 var turnBanner = document.querySelector('.announcements');
 var boxes = document.querySelectorAll('.box');
-var boardGrid = document.querySelector('.board-grid')
+var boardGrid = document.querySelector('.board-grid');
 
 // Event listeners
 
 window.addEventListener('load', displayTurn);
 boardGrid.addEventListener('click', function(event) {
-    selectBox(event)
-    displayToken(event)
- });
+    selectBox(event);
+    displayToken(event);
+});
 
 
 
@@ -31,7 +31,7 @@ var waterPlayer = createPlayer('water', 2, '💧', 0, false);
 
 var players = [firePlayer, waterPlayer];
 
- var gameBoardBoxes = [] 
+ var gameBoardBoxes = [];
 
 window.addEventListener('load', displayTurn);
 
@@ -48,16 +48,15 @@ function selectBox(event) {
     return gameBoardBoxes
 }
 
-function displayToken(event) {
-    var selectedBox = gameBoardBoxes[gameBoardBoxes.length -1]
-    console.log('selectBox', selectedBox)
+function displayToken() {
+    var selectedBox = gameBoardBoxes[gameBoardBoxes.length -1];
     for (var i = 0; i < players.length; i++) {
         if (players[i].turn) {
             selectedBox.innerHTML += 
             `${players[i].token}`
         }
     }   
-     changeTurn(players);
+    changeTurn(players);
 }
 
 function changeTurn(players) {
