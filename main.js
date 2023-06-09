@@ -61,7 +61,6 @@ function displayTurn() {
         if (players[i].turn) {
             turnBanner.innerHTML = 
             `It\'s ${players[i].token}\'s turn!`
-            console.log('displayed turn', players[i].token)
         } 
     }    
 }
