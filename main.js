@@ -16,15 +16,24 @@ var box9 = document.querySelector('.box9');
 
 window.addEventListener('load', displayTurn);
 
-box1.addEventListener('click', displayToken);
-box2.addEventListener('click', displayToken);
-box3.addEventListener('click', displayToken);
-box4.addEventListener('click', displayToken);
-box5.addEventListener('click', displayToken);
-box6.addEventListener('click', displayToken);
-box7.addEventListener('click', displayToken);
-box8.addEventListener('click', displayToken);
-box9.addEventListener('click', displayToken);
+box1.addEventListener('click', function() {
+    displayToken(box1)});
+box2.addEventListener('click', function() {
+    displayToken(box2)});
+box3.addEventListener('click', function() {
+    displayToken(box3)});
+box4.addEventListener('click', function() {
+    displayToken(box4)});
+box5.addEventListener('click', function() {
+    displayToken(box5)});
+box6.addEventListener('click', function() {
+    displayToken(box6)});
+box7.addEventListener('click', function() {
+    displayToken(box7)});
+box8.addEventListener('click', function() {
+    displayToken(box8)});
+box9.addEventListener('click', function() {
+    displayToken(box9)});
 
 
 //functions
@@ -42,6 +51,8 @@ var firePlayer = createPlayer('fire', 1, '🔥', 0, true);
 var waterPlayer = createPlayer('water', 2, '💧', 0, false);
 
 var players = [firePlayer, waterPlayer];
+
+window.addEventListener('load', displayTurn);
 
 // Function(s) to display the game board and user data
 
@@ -62,10 +73,10 @@ function changeTurn(players) {
     displayTurn();
 }
 
-function displayToken() {
+function displayToken(boxNum) {
     for (var i = 0; i < players.length; i++) {
         if (players[i].turn) {
-            box1.innerHTML += 
+            boxNum.innerHTML += 
             `${players[i].token}`
         }
     }    changeTurn(players)
