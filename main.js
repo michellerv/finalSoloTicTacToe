@@ -4,15 +4,6 @@
 var turnBanner = document.querySelector('.announcements');
 var boxes = document.querySelectorAll('.box');
 var boardGrid = document.querySelector('.board-grid')
-// var box1 = document.querySelector('.box1');
-// var box2 = document.querySelector('.box2');
-// var box3 = document.querySelector('.box3');
-// var box4 = document.querySelector('.box4');
-// var box5 = document.querySelector('.box5');
-// var box6 = document.querySelector('.box6');
-// var box7 = document.querySelector('.box7');
-// var box8 = document.querySelector('.box8');
-// var box9 = document.querySelector('.box9');
 
 // Event listeners
 
@@ -20,30 +11,8 @@ window.addEventListener('load', displayTurn);
 boardGrid.addEventListener('click', function(event) {
     selectBox(event)
     displayToken(event)
-    // var eventTargetClass = event.target.className
-    // for (var i = 0; i < boxes.length; i++) {
-    //     if(boxes[i].classList.contains(eventTargetClass))
-    //     displayToken(boxes)
-    // } 
  });
-// box1.addEventListener('click', function() {
-//     displayToken(box1)});
-// box2.addEventListener('click', function() {
-//     displayToken(box2)});
-// box3.addEventListener('click', function() {
-//     displayToken(box3)});
-// box4.addEventListener('click', function() {
-//     displayToken(box4)});
-// box5.addEventListener('click', function() {
-//     displayToken(box5)});
-// box6.addEventListener('click', function() {
-//     displayToken(box6)});
-// box7.addEventListener('click', function() {
-//     displayToken(box7)});
-// box8.addEventListener('click', function() {
-//     displayToken(box8)});
-// box9.addEventListener('click', function() {
-//     displayToken(box9)});
+
 
 
 //functions
