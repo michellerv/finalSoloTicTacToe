@@ -10,9 +10,12 @@ var boardGrid = document.querySelector('.board-grid');
 
 window.addEventListener('load', displayTurn);
 boardGrid.addEventListener('click', function(event) {
-    selectedBox = selectBox(event);
-    addMoves(selectedBox);
-    displayToken(event);
+    if (!stopRepeats(selectBox(event))) {
+        return
+    }  
+        selectedBox = selectBox(event);
+        addMoves(selectedBox);
+        displayToken();
 });
 
 var firePlayer = createPlayer('fire', 1, '🔥', 0, true);
@@ -20,7 +23,7 @@ var waterPlayer = createPlayer('water', 2, '💧', 0, false);
 
 var players = [firePlayer, waterPlayer];
 
-var gameBoardBoxes = [];
+// var gameBoardBoxes = [];
 var selectedBox;
 
 
@@ -44,18 +47,11 @@ function selectBox(event) {
     var eventTargetClass = event.target.className
     for (var i = 0; i < boxes.length; i++) {
         if(boxes[i].className === eventTargetClass) {
-           stopRepeats(boxes[i]);
+        //    stopRepeats(boxes[i]);
            return boxes[i]
         }
     }    
 }
-
-function stopRepeats(box) {
-    if (gameBoardBoxes.includes(box)) {
-        return 
-    }
-    gameBoardBoxes.push(box)
-} 
 
 function addMoves(box) {
     for (var i = 0; i < players.length; i++) {
@@ -63,8 +59,16 @@ function addMoves(box) {
     }
 }
 
+function stopRepeats(box) {
+    for (var i = 0; i < players.length; i++) {
+    if (players[i].moves.includes(box)) {
+        return false
+    }
+        return true
+    } 
+}
+
 function displayToken() {
-    var selectedBox = gameBoardBoxes[gameBoardBoxes.length -1];
     for (var i = 0; i < players.length; i++) {
         if (players[i].turn) {
             selectedBox.innerHTML += 
