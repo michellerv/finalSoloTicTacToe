@@ -2,38 +2,48 @@
 // Query selectors
 
 var turnBanner = document.querySelector('.announcements');
-var box1 = document.querySelector('.box1');
-var box2 = document.querySelector('.box2');
-var box3 = document.querySelector('.box3');
-var box4 = document.querySelector('.box4');
-var box5 = document.querySelector('.box5');
-var box6 = document.querySelector('.box6');
-var box7 = document.querySelector('.box7');
-var box8 = document.querySelector('.box8');
-var box9 = document.querySelector('.box9');
+var boxes = document.querySelectorAll('.box');
+var boardGrid = document.querySelector('.board-grid')
+// var box1 = document.querySelector('.box1');
+// var box2 = document.querySelector('.box2');
+// var box3 = document.querySelector('.box3');
+// var box4 = document.querySelector('.box4');
+// var box5 = document.querySelector('.box5');
+// var box6 = document.querySelector('.box6');
+// var box7 = document.querySelector('.box7');
+// var box8 = document.querySelector('.box8');
+// var box9 = document.querySelector('.box9');
 
 // Event listeners
 
 window.addEventListener('load', displayTurn);
-
-box1.addEventListener('click', function() {
-    displayToken(box1)});
-box2.addEventListener('click', function() {
-    displayToken(box2)});
-box3.addEventListener('click', function() {
-    displayToken(box3)});
-box4.addEventListener('click', function() {
-    displayToken(box4)});
-box5.addEventListener('click', function() {
-    displayToken(box5)});
-box6.addEventListener('click', function() {
-    displayToken(box6)});
-box7.addEventListener('click', function() {
-    displayToken(box7)});
-box8.addEventListener('click', function() {
-    displayToken(box8)});
-box9.addEventListener('click', function() {
-    displayToken(box9)});
+boardGrid.addEventListener('click', function(event) {
+    selectBox(event)
+    displayToken(event)
+    // var eventTargetClass = event.target.className
+    // for (var i = 0; i < boxes.length; i++) {
+    //     if(boxes[i].classList.contains(eventTargetClass))
+    //     displayToken(boxes)
+    // } 
+ });
+// box1.addEventListener('click', function() {
+//     displayToken(box1)});
+// box2.addEventListener('click', function() {
+//     displayToken(box2)});
+// box3.addEventListener('click', function() {
+//     displayToken(box3)});
+// box4.addEventListener('click', function() {
+//     displayToken(box4)});
+// box5.addEventListener('click', function() {
+//     displayToken(box5)});
+// box6.addEventListener('click', function() {
+//     displayToken(box6)});
+// box7.addEventListener('click', function() {
+//     displayToken(box7)});
+// box8.addEventListener('click', function() {
+//     displayToken(box8)});
+// box9.addEventListener('click', function() {
+//     displayToken(box9)});
 
 
 //functions
@@ -52,17 +62,33 @@ var waterPlayer = createPlayer('water', 2, '💧', 0, false);
 
 var players = [firePlayer, waterPlayer];
 
+ var gameBoardBoxes = [] 
+
 window.addEventListener('load', displayTurn);
 
 // Function(s) to display the game board and user data
 
-function displayToken(boxNum) {
+function selectBox(event) {
+    var eventTargetClass = event.target.className
+    for (var i = 0; i < boxes.length; i++) {
+        if(boxes[i].className === eventTargetClass) {
+            console.log(boxes[i].className)
+           gameBoardBoxes.push(boxes[i])
+        }
+    }
+    return gameBoardBoxes
+}
+
+function displayToken(event) {
+    var selectedBox = gameBoardBoxes[gameBoardBoxes.length -1]
+    console.log('selectBox', selectedBox)
     for (var i = 0; i < players.length; i++) {
         if (players[i].turn) {
-            boxNum.innerHTML += 
+            selectedBox.innerHTML += 
             `${players[i].token}`
         }
-    }    changeTurn(players)
+    }   
+     changeTurn(players);
 }
 
 function changeTurn(players) {
@@ -80,17 +106,16 @@ function displayTurn() {
         } 
     }    
 }
-
-
-function stopRepeats() {
-    for (var i = 0; i < gameBoardBoxes.length; i++) {
-        if(gameBoardBoxes[i].occupied) {
-           return displayToken()
-        } else {
-            return
-        }
-    }   
-}
+ 
+// function stopRepeats() {
+//     for (var i = 0; i < gameBoardBoxes.length; i++) {
+//         if(gameBoardBoxes[i].occupied) {
+//            return displayToken()
+//         } else {
+//             return
+//         }
+//     }   
+// }
 
 // A function that creates the objects that store each players’ informations - properties should include: id (ex: 'one'), token (ex: '⭐️'), wins (ex: 0)
 
@@ -103,15 +128,15 @@ function increaseWins(players) {
 
 // A function called increaseWins - increases the count of a player’s wins (should work for either player)
 
-function createGameBoard() {
-    for (var i = 1; i < 10; i++) {
-        gameBoardBoxes.push({
-            boxNum: i,
-            occuppied: false,
-        })
-    }
-}
-var gameBoardBoxes = [];
+// function createGameBoard() {
+//     for (var i = 1; i < 10; i++) {
+//         gameBoardBoxes.push({
+//             boxNum: i,
+//             occuppied: false,
+//         })
+//     }
+// }
+
 
 
 // A function that keeps track of the data for the game board
