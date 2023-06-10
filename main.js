@@ -2,38 +2,28 @@
 // Query selectors
 
 var turnBanner = document.querySelector('.announcements');
-var box1 = document.querySelector('.box1');
-var box2 = document.querySelector('.box2');
-var box3 = document.querySelector('.box3');
-var box4 = document.querySelector('.box4');
-var box5 = document.querySelector('.box5');
-var box6 = document.querySelector('.box6');
-var box7 = document.querySelector('.box7');
-var box8 = document.querySelector('.box8');
-var box9 = document.querySelector('.box9');
+var boxes = document.querySelectorAll('.box');
+var boardGrid = document.querySelector('.board-grid');
 
 // Event listeners
 
-window.addEventListener('load', displayTurn);
 
-box1.addEventListener('click', function() {
-    displayToken(box1)});
-box2.addEventListener('click', function() {
-    displayToken(box2)});
-box3.addEventListener('click', function() {
-    displayToken(box3)});
-box4.addEventListener('click', function() {
-    displayToken(box4)});
-box5.addEventListener('click', function() {
-    displayToken(box5)});
-box6.addEventListener('click', function() {
-    displayToken(box6)});
-box7.addEventListener('click', function() {
-    displayToken(box7)});
-box8.addEventListener('click', function() {
-    displayToken(box8)});
-box9.addEventListener('click', function() {
-    displayToken(box9)});
+window.addEventListener('load', displayTurn);
+boardGrid.addEventListener('click', function(event) {
+    if (!stopRepeats(selectBox(event))) {
+        return
+    }  
+        selectedBox = selectBox(event);
+        addMoves(selectedBox);
+        displayToken();
+});
+
+var firePlayer = createPlayer('fire', 1, '🔥', 0, true);
+var waterPlayer = createPlayer('water', 2, '💧', 0, false);
+
+var players = [firePlayer, waterPlayer];
+
+var selectedBox;
 
 
 //functions
@@ -44,25 +34,45 @@ function createPlayer(name, id, token, wins, turn) {
         token: token,
         wins: wins,
         turn: turn,
+        moves: []
     }
 }
 
-var firePlayer = createPlayer('fire', 1, '🔥', 0, true);
-var waterPlayer = createPlayer('water', 2, '💧', 0, false);
 
-var players = [firePlayer, waterPlayer];
-
-window.addEventListener('load', displayTurn);
 
 // Function(s) to display the game board and user data
+function stopRepeats(box) {
+    for (var i = 0; i < players.length; i++) {
+    if (players[i].moves.includes(box)) {
+        return false
+    }
+        return true
+    } 
+}
 
-function displayTurn() {
+function selectBox(event) {
+    var eventTargetClass = event.target.className
+    for (var i = 0; i < boxes.length; i++) {
+        if(boxes[i].className === eventTargetClass) {
+           return boxes[i]
+        }
+    }    
+}
+
+function addMoves(box) {
+    for (var i = 0; i < players.length; i++) {
+        players[i].moves.push(box)
+    }
+}
+
+function displayToken() {
     for (var i = 0; i < players.length; i++) {
         if (players[i].turn) {
-            turnBanner.innerHTML = 
-            `It\'s ${players[i].token}\'s turn!`
-        } 
-    }    
+            selectedBox.innerHTML += 
+            `${players[i].token}`
+        }
+    }   
+    changeTurn(players);
 }
 
 function changeTurn(players) {
@@ -72,14 +82,17 @@ function changeTurn(players) {
     displayTurn();
 }
 
-function displayToken(boxNum) {
+function displayTurn() {
     for (var i = 0; i < players.length; i++) {
         if (players[i].turn) {
-            boxNum.innerHTML += 
-            `${players[i].token}`
-        }
-    }    changeTurn(players)
+            turnBanner.innerHTML = 
+            `It\'s ${players[i].token}\'s turn!`
+        } 
+    }    
 }
+ 
+
+
 // A function that creates the objects that store each players’ informations - properties should include: id (ex: 'one'), token (ex: '⭐️'), wins (ex: 0)
 
 function increaseWins(players) {
@@ -91,15 +104,16 @@ function increaseWins(players) {
 
 // A function called increaseWins - increases the count of a player’s wins (should work for either player)
 
-function createGameBoard() {
-    for (var i = 1; i < 10; i++) {
-        gameBoardBoxes.push({
-            boxNum: i,
-            occuppied: false,
-        })
-    }
-}
-var gameBoardBoxes = [];
+//Use?
+// function createGameBoard() {
+//     for (var i = 1; i < 10; i++) {
+//         gameBoardBoxes.push({
+//             boxNum: i,
+//             occuppied: false,
+//         })
+//     }
+// }
+
 
 
 // A function that keeps track of the data for the game board
