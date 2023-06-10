@@ -88,9 +88,19 @@ function selectBox(event) {
 
 function addMoves(box) {
     for (var i = 0; i < players.length; i++) {
-        if (players[i].turn)
+        if (players[i].turn) {
             players[i].moves.push(box)
+        }
     }
+}
+
+
+function firePlayerWins() {
+
+}
+
+function waterPlayerWin() {
+
 }
 
 // A function that creates the objects that store each players’ informations - properties should include: id (ex: 'one'), token (ex: '⭐️'), wins (ex: 0)
