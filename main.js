@@ -15,15 +15,16 @@ boardGrid.addEventListener('click', function(event) {
     }  
         selectedBox = selectBox(event);
         addMoves(selectedBox);
+        gameBoardBoxes.push(selectedBox);
         displayToken();
 });
 
 var firePlayer = createPlayer('fire', 1, '🔥', 0, true);
 var waterPlayer = createPlayer('water', 2, '💧', 0, false);
-
 var players = [firePlayer, waterPlayer];
 
 var selectedBox;
+var gameBoardBoxes = [];
 
 
 //functions
