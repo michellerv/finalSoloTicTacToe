@@ -42,6 +42,32 @@ function createPlayer(name, id, token, wins, turn) {
 
 
 // Function(s) to display the game board and user data
+function displayTurn() {
+    for (var i = 0; i < players.length; i++) {
+        if (players[i].turn) {
+            turnBanner.innerHTML = 
+            `It\'s ${players[i].token}\'s turn!`
+        } 
+    }    
+}
+ 
+function changeTurn(players) {
+    for (var i = 0; i < players.length; i++) {
+        players[i].turn = !players[i].turn;
+    }
+    displayTurn();
+}
+
+function displayToken() {
+    for (var i = 0; i < players.length; i++) {
+        if (players[i].turn) {
+            selectedBox.innerHTML += 
+            `${players[i].token}`
+        }
+    }   
+    changeTurn(players);
+}
+
 function stopRepeats(box) {
     for (var i = 0; i < players.length; i++) {
         if (players[0].moves.includes(box) || players[1].moves.includes(box)) {
@@ -66,34 +92,6 @@ function addMoves(box) {
             players[i].moves.push(box)
     }
 }
-
-function displayToken() {
-    for (var i = 0; i < players.length; i++) {
-        if (players[i].turn) {
-            selectedBox.innerHTML += 
-            `${players[i].token}`
-        }
-    }   
-    changeTurn(players);
-}
-
-function changeTurn(players) {
-    for (var i = 0; i < players.length; i++) {
-        players[i].turn = !players[i].turn;
-    }
-    displayTurn();
-}
-
-function displayTurn() {
-    for (var i = 0; i < players.length; i++) {
-        if (players[i].turn) {
-            turnBanner.innerHTML = 
-            `It\'s ${players[i].token}\'s turn!`
-        } 
-    }    
-}
- 
-
 
 // A function that creates the objects that store each players’ informations - properties should include: id (ex: 'one'), token (ex: '⭐️'), wins (ex: 0)
 
