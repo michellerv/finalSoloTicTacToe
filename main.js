@@ -43,10 +43,10 @@ function createPlayer(name, id, token, wins, turn) {
 // Function(s) to display the game board and user data
 function stopRepeats(box) {
     for (var i = 0; i < players.length; i++) {
-    if (players[i].moves.includes(box)) {
-        return false
-    }
-        return true
+        if (players[0].moves.includes(box) || players[1].moves.includes(box)) {
+            return false
+        }
+            return true
     } 
 }
 
@@ -61,7 +61,8 @@ function selectBox(event) {
 
 function addMoves(box) {
     for (var i = 0; i < players.length; i++) {
-        players[i].moves.push(box)
+        if (players[i].turn)
+            players[i].moves.push(box)
     }
 }
 
