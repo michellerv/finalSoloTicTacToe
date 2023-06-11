@@ -16,8 +16,7 @@ boardGrid.addEventListener('click', function(event) {
         selectedBox = selectBox(event);
         addMoves(selectedBox);
         gameBoardBoxes.push(selectedBox);
-        displayToken();
-        checkForWin();
+        displayToken(event);
 });
 
 var firePlayer = createPlayer('fire', 1, '🔥', 0, true);
@@ -59,10 +58,11 @@ function changeTurn(players) {
     displayTurn();
 }
 
-function displayToken() {
+function displayToken(event) {
+    var box = event.target
     for (var i = 0; i < players.length; i++) {
         if (players[i].turn) {
-            selectedBox.innerHTML += 
+            box.innerHTML += 
             `${players[i].token}`
         }
     }   
@@ -79,10 +79,10 @@ function stopRepeats(box) {
 }
 
 function selectBox(event) {
-    var eventTargetClass = event.target.className
+    var eventTargetId = event.target.id
     for (var i = 0; i < boxes.length; i++) {
-        if(boxes[i].className === eventTargetClass) {
-           return boxes[i]
+        if(boxes[i].id === eventTargetId) {
+           return boxes[i].getAttribute('id')
         }
     }    
 }
@@ -91,6 +91,7 @@ function addMoves(box) {
     for (var i = 0; i < players.length; i++) {
         if (players[i].turn) {
             players[i].moves.push(box)
+            checkForWin()
         }
     }
 }
@@ -105,14 +106,15 @@ function checkForWin() {
 
 function checkFirePlayerWin() {
     for (var i = 0; i < firePlayer.moves.length; i++) {
-        if (firePlayer.moves[i].className.includes("box box1", "box box2", "box box3" ||
-                                                   "box box1", "box box4", "box box7" ||
-                                                   "box box1", "box box5", "box box9" ||
-                                                   "box box2", "box box5", "box box8" ||
-                                                   "box box3", "box box6", "box box9" ||
-                                                   "box box3", "box box5", "box box7" ||
-                                                   "box box4", "box box5", "box box6" ||
-                                                   "box box7", "box box8", "box box9")) {
+        if (firePlayer.moves[i].includes( 1 && 2 && 3 ||
+                                             4 && 5 && 6 ||            
+                                             7 && 8 && 9 ||
+                                             1 && 5 && 9 ||
+                                             3 && 5 && 7 ||
+                                             1 && 5 && 7 ||
+                                             2 && 6 && 8 ||
+                                             3 && 6 && 9 
+        )) {
             firePlayer.wins = firePlayer.wins +1
             return firePlayer
         } else {
@@ -123,14 +125,15 @@ function checkFirePlayerWin() {
 
 function checkWaterPlayerWin() {
     for (var i = 0; i < waterPlayer.moves.length; i++) {
-        if (waterPlayer.moves[i].className.includes("box box1", "box box2", "box box3" ||
-                                                    "box box1", "box box4", "box box7" ||
-                                                    "box box1", "box box5", "box box9" ||
-                                                    "box box2", "box box5", "box box8" ||
-                                                    "box box3", "box box6", "box box9" ||
-                                                    "box box3", "box box5", "box box7" ||
-                                                    "box box4", "box box5", "box box6" ||
-                                                    "box box7", "box box8", "box box9")) {
+        if (waterPlayer.moves[i].includes( 1 && 2 && 3 ||
+                                              4 && 5 && 6 ||            
+                                              7 && 8 && 9 ||
+                                              1 && 5 && 9 ||
+                                              3 && 5 && 7 ||
+                                              1 && 5 && 7 ||
+                                              2 && 6 && 8 ||
+                                              3 && 6 && 9 
+        )) {
             waterPlayer.wins = waterPlayer.wins +1
             return waterPlayer
         } else {
