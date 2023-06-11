@@ -16,7 +16,6 @@ boardGrid.addEventListener('click', function(event) {
         selectedBox = selectBox(event);
         addMoves(selectedBox); 
         displayToken(event);
-        // checkForWin(event);
 });
 
 var firePlayer = createPlayer('fire', 1, '🔥', 0, true);
@@ -103,14 +102,6 @@ function addMoves(box) {
     }
 }
 
-// function checkForWin() {
-//     if (firePlayer.turn) {
-//         checkFirePlayerWin()
-//     } else {
-//         checkWaterPlayerWin()
-//     }
-// }
-
 function checkForWin() {
     for (var i = 0; i < winCombos.length; i++) {
         var fireWin = winCombos[i].every(function(position) {
@@ -131,127 +122,7 @@ function checkForWin() {
 }
 
 
-// function checkFirePlayerWin() {
-//     for (var i = 0; i < firePlayer.moves.length; i++) {
-//         if (
-//             firePlayer.moves[i].includes(1) && firePlayer.moves[i].includes(2) && firePlayer.moves[i].includes(3) ||
-//             firePlayer.moves[i].includes(4) && firePlayer.moves[i].includes(5) && firePlayer.moves[i].includes(6) ||
-//             firePlayer.moves[i].includes(7) && firePlayer.moves[i].includes(8) && firePlayer.moves[i].includes(9) ||
-//             firePlayer.moves[i].includes(1) && firePlayer.moves[i].includes(5) && firePlayer.moves[i].includes(9) ||
-//             firePlayer.moves[i].includes(3) && firePlayer.moves[i].includes(5) && firePlayer.moves[i].includes(7) ||
-//             firePlayer.moves[i].includes(1) && firePlayer.moves[i].includes(4) && firePlayer.moves[i].includes(7) ||
-//             firePlayer.moves[i].includes(2) && firePlayer.moves[i].includes(5) && firePlayer.moves[i].includes(8) ||
-//             firePlayer.moves[i].includes(3) && firePlayer.moves[i].includes(6) && firePlayer.moves[i].includes(9)
-//         ) {
-//             firePlayer.wins += 1;
-//             return firePlayer;
-//         }
-//     }
-//     return 'draw!';
-// }
 
-// function checkWaterPlayerWin() {
-//     for (var i = 0; i < waterPlayer.moves.length; i++) {
-//         if (
-//             waterPlayer.moves[i].includes(1) && waterPlayer.moves[i].includes(2) && waterPlayer.moves[i].includes(3) ||
-//             waterPlayer.moves[i].includes(4) && waterPlayer.moves[i].includes(5) && waterPlayer.moves[i].includes(6) ||
-//             waterPlayer.moves[i].includes(7) && waterPlayer.moves[i].includes(8) && waterPlayer.moves[i].includes(9) ||
-//             waterPlayer.moves[i].includes(1) && waterPlayer.moves[i].includes(5) && waterPlayer.moves[i].includes(9) ||
-//             waterPlayer.moves[i].includes(3) && waterPlayer.moves[i].includes(5) && waterPlayer.moves[i].includes(7) ||
-//             waterPlayer.moves[i].includes(1) && waterPlayer.moves[i].includes(4) && waterPlayer.moves[i].includes(7) ||
-//             waterPlayer.moves[i].includes(2) && waterPlayer.moves[i].includes(5) && waterPlayer.moves[i].includes(8) ||
-//             waterPlayer.moves[i].includes(3) && waterPlayer.moves[i].includes(6) && waterPlayer.moves[i].includes(9)
-//         ) {
-//             waterPlayer.wins += 1;
-//             return waterPlayer;
-//         }
-//     }
-//     return 'draw!';
-// }
-
-// function checkFirePlayerWin() {
-//     for (var i = 0; i < firePlayer.moves.length; i++) {
-//         if (firePlayer.moves[i].includes( 1 && 2 && 3 ||
-//                                           4 && 5 && 6 ||            
-//                                           7 && 8 && 9 ||
-//                                           1 && 5 && 9 ||
-//                                           3 && 5 && 7 ||
-//                                           1 && 5 && 7 ||
-//                                           2 && 6 && 8 ||
-//                                           3 && 6 && 9 
-//         )) {
-//             firePlayer.wins +=1
-//             return firePlayer
-//         } else {
-//             return 'draw!'
-//         }
-//     }
-// }
-
-// function checkWaterPlayerWin() {
-//     for (var i = 0; i < waterPlayer.moves.length; i++) {
-//         if (waterPlayer.moves[i].includes( 1 && 2 && 3 ||
-//                                            4 && 5 && 6 ||            
-//                                            7 && 8 && 9 ||
-//                                            1 && 5 && 9 ||
-//                                            3 && 5 && 7 ||
-//                                            1 && 5 && 7 ||
-//                                            2 && 6 && 8 ||
-//                                            3 && 6 && 9 
-//         )) {
-//             waterPlayer.wins += 1
-//             return waterPlayer
-//         } else {
-//             return 'draw!'
-//         }
-//     }
-// }
-
-// function increaseWins(firePlayer) {
-//      firePlayer.wins ++
-    
-//      return firePlayer;
-//  } 
-
-//  function increaseWins(waterPlayer) {
-//     waterPlayer.wins ++
-    
-//      return waterPlayer;
-//  } 
-
-
-// function increaseWins(players) {
-//     for (var i = 0; i < players.length; i++) {
-//      players[i].wins ++
-//     }
-//      return players;
-//  }
-
-// function waterPlayerWins() {
-//     for (var i = 0; i < waterPlayer.moves.length; i++) {
-//         if (waterPlayer.moves[i].className.includes("box box1", "box box2", "box box3")) {
-//            return 'win!'
-//         } else if (waterPlayer.moves[i].className.includes("box box1", "box box4", "box box7")) {
-//             return 'win!'
-//         } else if (waterPlayer.moves[i].className.includes("box box1", "box box5", "box box9")) {
-//             return 'win!'
-//         } else if (waterPlayer.moves[i].className.includes("box box2", "box box5", "box box8")) {
-//             return 'win!'
-//         } else if (waterPlayer.moves[i].className.includes("box box3", "box box6", "box box9")) {
-//             return 'win!'
-//         } else if (waterPlayer.moves[i].className.includes("box box3", "box box5", "box box7")) {
-//             return 'win!'
-//         } else if (waterPlayer.moves[i].className.includes("box box4", "box box5", "box box6")) {
-//             return 'win!'
-//         } else if (waterPlayer.moves[i].className.includes("box box7", "box box8", "box box9")) {
-//             return 'win!'
-//         } else {
-//             return 'draw!'
-//         }
-       
-//     }
-
-// }
 
 
 
