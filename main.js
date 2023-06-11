@@ -14,9 +14,9 @@ boardGrid.addEventListener('click', function(event) {
         return
     }  
         selectedBox = selectBox(event);
-        addMoves(selectedBox);
-        gameBoardBoxes.push(selectedBox);
+        addMoves(selectedBox); 
         displayToken(event);
+        // checkForWin(event);
 });
 
 var firePlayer = createPlayer('fire', 1, '🔥', 0, true);
@@ -24,7 +24,14 @@ var waterPlayer = createPlayer('water', 2, '💧', 0, false);
 var players = [firePlayer, waterPlayer];
 
 var selectedBox;
-var gameBoardBoxes = [];
+var winCombos = [['1', '2', '3'], 
+                 ['4', '5', '6'], 
+                 ['7', '8', '9'], 
+                 ['1', '5', '9'], 
+                 ['3', '5', '7'], 
+                 ['1', '5', '7'], 
+                 ['2', '6', '8'], 
+                 ['3', '6', '9']];
 
 
 //functions
@@ -66,6 +73,7 @@ function displayToken(event) {
             `${players[i].token}`
         }
     }   
+    checkForWin()
     changeTurn(players);
 }
 
@@ -91,56 +99,113 @@ function addMoves(box) {
     for (var i = 0; i < players.length; i++) {
         if (players[i].turn) {
             players[i].moves.push(box)
-            checkForWin()
         }
     }
 }
+
+// function checkForWin() {
+//     if (firePlayer.turn) {
+//         checkFirePlayerWin()
+//     } else {
+//         checkWaterPlayerWin()
+//     }
+// }
 
 function checkForWin() {
-    if (!firePlayer.turn) {
-        checkFirePlayerWin()
-    } else {
-        checkWaterPlayerWin()
-    }
+    for (var i = 0; i < winCombos.length; i++) {
+        var fireWin = winCombos[i].every(function(position) {
+            return (firePlayer.moves.includes(position))
+        })
+        var waterWin = winCombos[i].every(function(position) {
+            return (waterPlayer.moves.includes(position))
+        }) 
+        if(fireWin) {
+            firePlayer.wins += 1    
+            return true
+        } else if (waterWin) {
+            waterPlayer.wins += 1
+            return true
+        } 
+    } 
+        return false
 }
 
-function checkFirePlayerWin() {
-    for (var i = 0; i < firePlayer.moves.length; i++) {
-        if (firePlayer.moves[i].includes( 1 && 2 && 3 ||
-                                             4 && 5 && 6 ||            
-                                             7 && 8 && 9 ||
-                                             1 && 5 && 9 ||
-                                             3 && 5 && 7 ||
-                                             1 && 5 && 7 ||
-                                             2 && 6 && 8 ||
-                                             3 && 6 && 9 
-        )) {
-            firePlayer.wins = firePlayer.wins +1
-            return firePlayer
-        } else {
-            return 'draw!'
-        }
-    }
-}
 
-function checkWaterPlayerWin() {
-    for (var i = 0; i < waterPlayer.moves.length; i++) {
-        if (waterPlayer.moves[i].includes( 1 && 2 && 3 ||
-                                              4 && 5 && 6 ||            
-                                              7 && 8 && 9 ||
-                                              1 && 5 && 9 ||
-                                              3 && 5 && 7 ||
-                                              1 && 5 && 7 ||
-                                              2 && 6 && 8 ||
-                                              3 && 6 && 9 
-        )) {
-            waterPlayer.wins = waterPlayer.wins +1
-            return waterPlayer
-        } else {
-            return 'draw!'
-        }
-    }
-}
+// function checkFirePlayerWin() {
+//     for (var i = 0; i < firePlayer.moves.length; i++) {
+//         if (
+//             firePlayer.moves[i].includes(1) && firePlayer.moves[i].includes(2) && firePlayer.moves[i].includes(3) ||
+//             firePlayer.moves[i].includes(4) && firePlayer.moves[i].includes(5) && firePlayer.moves[i].includes(6) ||
+//             firePlayer.moves[i].includes(7) && firePlayer.moves[i].includes(8) && firePlayer.moves[i].includes(9) ||
+//             firePlayer.moves[i].includes(1) && firePlayer.moves[i].includes(5) && firePlayer.moves[i].includes(9) ||
+//             firePlayer.moves[i].includes(3) && firePlayer.moves[i].includes(5) && firePlayer.moves[i].includes(7) ||
+//             firePlayer.moves[i].includes(1) && firePlayer.moves[i].includes(4) && firePlayer.moves[i].includes(7) ||
+//             firePlayer.moves[i].includes(2) && firePlayer.moves[i].includes(5) && firePlayer.moves[i].includes(8) ||
+//             firePlayer.moves[i].includes(3) && firePlayer.moves[i].includes(6) && firePlayer.moves[i].includes(9)
+//         ) {
+//             firePlayer.wins += 1;
+//             return firePlayer;
+//         }
+//     }
+//     return 'draw!';
+// }
+
+// function checkWaterPlayerWin() {
+//     for (var i = 0; i < waterPlayer.moves.length; i++) {
+//         if (
+//             waterPlayer.moves[i].includes(1) && waterPlayer.moves[i].includes(2) && waterPlayer.moves[i].includes(3) ||
+//             waterPlayer.moves[i].includes(4) && waterPlayer.moves[i].includes(5) && waterPlayer.moves[i].includes(6) ||
+//             waterPlayer.moves[i].includes(7) && waterPlayer.moves[i].includes(8) && waterPlayer.moves[i].includes(9) ||
+//             waterPlayer.moves[i].includes(1) && waterPlayer.moves[i].includes(5) && waterPlayer.moves[i].includes(9) ||
+//             waterPlayer.moves[i].includes(3) && waterPlayer.moves[i].includes(5) && waterPlayer.moves[i].includes(7) ||
+//             waterPlayer.moves[i].includes(1) && waterPlayer.moves[i].includes(4) && waterPlayer.moves[i].includes(7) ||
+//             waterPlayer.moves[i].includes(2) && waterPlayer.moves[i].includes(5) && waterPlayer.moves[i].includes(8) ||
+//             waterPlayer.moves[i].includes(3) && waterPlayer.moves[i].includes(6) && waterPlayer.moves[i].includes(9)
+//         ) {
+//             waterPlayer.wins += 1;
+//             return waterPlayer;
+//         }
+//     }
+//     return 'draw!';
+// }
+
+// function checkFirePlayerWin() {
+//     for (var i = 0; i < firePlayer.moves.length; i++) {
+//         if (firePlayer.moves[i].includes( 1 && 2 && 3 ||
+//                                           4 && 5 && 6 ||            
+//                                           7 && 8 && 9 ||
+//                                           1 && 5 && 9 ||
+//                                           3 && 5 && 7 ||
+//                                           1 && 5 && 7 ||
+//                                           2 && 6 && 8 ||
+//                                           3 && 6 && 9 
+//         )) {
+//             firePlayer.wins +=1
+//             return firePlayer
+//         } else {
+//             return 'draw!'
+//         }
+//     }
+// }
+
+// function checkWaterPlayerWin() {
+//     for (var i = 0; i < waterPlayer.moves.length; i++) {
+//         if (waterPlayer.moves[i].includes( 1 && 2 && 3 ||
+//                                            4 && 5 && 6 ||            
+//                                            7 && 8 && 9 ||
+//                                            1 && 5 && 9 ||
+//                                            3 && 5 && 7 ||
+//                                            1 && 5 && 7 ||
+//                                            2 && 6 && 8 ||
+//                                            3 && 6 && 9 
+//         )) {
+//             waterPlayer.wins += 1
+//             return waterPlayer
+//         } else {
+//             return 'draw!'
+//         }
+//     }
+// }
 
 // function increaseWins(firePlayer) {
 //      firePlayer.wins ++
