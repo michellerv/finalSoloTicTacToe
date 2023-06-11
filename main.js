@@ -94,69 +94,102 @@ function addMoves(box) {
     }
 }
 
+function checkForWin() {
+    if (firePlayer.turn) {
+        firePlayerWin()
+    } else {
+        waterPlayerWin()
+    }
+}
 
-function firePlayerWins() {
+function firePlayerWin() {
     for (var i = 0; i < firePlayer.moves.length; i++) {
-        if (firePlayer.moves[i].className.includes("box box1", "box box2", "box box3")) {
-           return 'win!'
-        } else if (firePlayer.moves[i].className.includes("box box1", "box box4", "box box7")) {
-            return 'win!'
-        } else if (firePlayer.moves[i].className.includes("box box1", "box box5", "box box9")) {
-            return 'win!'
-        } else if (firePlayer.moves[i].className.includes("box box2", "box box5", "box box8")) {
-            return 'win!'
-        } else if (firePlayer.moves[i].className.includes("box box3", "box box6", "box box9")) {
-            return 'win!'
-        } else if (firePlayer.moves[i].className.includes("box box3", "box box5", "box box7")) {
-            return 'win!'
-        } else if (firePlayer.moves[i].className.includes("box box4", "box box5", "box box6")) {
-            return 'win!'
-        } else if (firePlayer.moves[i].className.includes("box box7", "box box8", "box box9")) {
-            return 'win!'
+        if (firePlayer.moves[i].className.includes("box box1", "box box2", "box box3" ||
+                                                   "box box1", "box box4", "box box7" ||
+                                                   "box box1", "box box5", "box box9" ||
+                                                   "box box2", "box box5", "box box8" ||
+                                                   "box box3", "box box6", "box box9" ||
+                                                   "box box3", "box box5", "box box7" ||
+                                                   "box box4", "box box5", "box box6" ||
+                                                   "box box7", "box box8", "box box9")) {
+            firePlayer.wins ++
+            return firePlayer
         } else {
             return 'draw!'
         }
-        // console.log('firePlayer moves className', firePlayer.moves[i].className)
     }
-
 }
 
 function waterPlayerWin() {
     for (var i = 0; i < waterPlayer.moves.length; i++) {
-        if (waterPlayer.moves[i].className.includes("box box1", "box box2", "box box3")) {
-           return 'win!'
-        } else if (waterPlayer.moves[i].className.includes("box box1", "box box4", "box box7")) {
-            return 'win!'
-        } else if (waterPlayer.moves[i].className.includes("box box1", "box box5", "box box9")) {
-            return 'win!'
-        } else if (waterPlayer.moves[i].className.includes("box box2", "box box5", "box box8")) {
-            return 'win!'
-        } else if (waterPlayer.moves[i].className.includes("box box3", "box box6", "box box9")) {
-            return 'win!'
-        } else if (waterPlayer.moves[i].className.includes("box box3", "box box5", "box box7")) {
-            return 'win!'
-        } else if (waterPlayer.moves[i].className.includes("box box4", "box box5", "box box6")) {
-            return 'win!'
-        } else if (waterPlayer.moves[i].className.includes("box box7", "box box8", "box box9")) {
-            return 'win!'
+        if (waterPlayer.moves[i].className.includes("box box1", "box box2", "box box3" ||
+                                                    "box box1", "box box4", "box box7" ||
+                                                    "box box1", "box box5", "box box9" ||
+                                                    "box box2", "box box5", "box box8" ||
+                                                    "box box3", "box box6", "box box9" ||
+                                                    "box box3", "box box5", "box box7" ||
+                                                    "box box4", "box box5", "box box6" ||
+                                                    "box box7", "box box8", "box box9")) {
+            waterPlayer.wins ++
+            return waterPlayer
         } else {
             return 'draw!'
         }
-       
     }
-
 }
+
+
+// function increaseWins(firePlayer) {
+//      firePlayer.wins ++
+    
+//      return firePlayer;
+//  } 
+
+//  function increaseWins(waterPlayer) {
+//     waterPlayer.wins ++
+    
+//      return waterPlayer;
+//  } 
+
+
+// function increaseWins(players) {
+//     for (var i = 0; i < players.length; i++) {
+//      players[i].wins ++
+//     }
+//      return players;
+//  }
+
+// function waterPlayerWins() {
+//     for (var i = 0; i < waterPlayer.moves.length; i++) {
+//         if (waterPlayer.moves[i].className.includes("box box1", "box box2", "box box3")) {
+//            return 'win!'
+//         } else if (waterPlayer.moves[i].className.includes("box box1", "box box4", "box box7")) {
+//             return 'win!'
+//         } else if (waterPlayer.moves[i].className.includes("box box1", "box box5", "box box9")) {
+//             return 'win!'
+//         } else if (waterPlayer.moves[i].className.includes("box box2", "box box5", "box box8")) {
+//             return 'win!'
+//         } else if (waterPlayer.moves[i].className.includes("box box3", "box box6", "box box9")) {
+//             return 'win!'
+//         } else if (waterPlayer.moves[i].className.includes("box box3", "box box5", "box box7")) {
+//             return 'win!'
+//         } else if (waterPlayer.moves[i].className.includes("box box4", "box box5", "box box6")) {
+//             return 'win!'
+//         } else if (waterPlayer.moves[i].className.includes("box box7", "box box8", "box box9")) {
+//             return 'win!'
+//         } else {
+//             return 'draw!'
+//         }
+       
+//     }
+
+// }
 
 
 
 // A function that creates the objects that store each players’ informations - properties should include: id (ex: 'one'), token (ex: '⭐️'), wins (ex: 0)
 
-function increaseWins(players) {
-   for (var i = 0; i < players.length; i++) {
-    players[i].wins ++
-   }
-    return players;
-}
+
 
 // A function called increaseWins - increases the count of a player’s wins (should work for either player)
 
