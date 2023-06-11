@@ -111,10 +111,12 @@ function checkForWin() {
             return (waterPlayer.moves.includes(position))
         }) 
         if(fireWin) {
-            firePlayer.wins += 1    
+            firePlayer.wins += 1  
+            //displayFirePlayerWin() 
             return true
         } else if (waterWin) {
             waterPlayer.wins += 1
+            //displayWaterPlayerWin()
             return true
         } 
     } 
@@ -122,7 +124,10 @@ function checkForWin() {
 }
 
 
-
+//displayFirePlayerWin() 
+//updateing banner and displaying win count
+//displayWaterPlayerWin()
+//updateing banner and displaying win count
 
 
 
