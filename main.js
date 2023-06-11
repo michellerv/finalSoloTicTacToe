@@ -17,6 +17,7 @@ boardGrid.addEventListener('click', function(event) {
         addMoves(selectedBox);
         gameBoardBoxes.push(selectedBox);
         displayToken();
+        checkForWin();
 });
 
 var firePlayer = createPlayer('fire', 1, '🔥', 0, true);
@@ -95,14 +96,14 @@ function addMoves(box) {
 }
 
 function checkForWin() {
-    if (firePlayer.turn) {
-        firePlayerWin()
+    if (!firePlayer.turn) {
+        checkFirePlayerWin()
     } else {
-        waterPlayerWin()
+        checkWaterPlayerWin()
     }
 }
 
-function firePlayerWin() {
+function checkFirePlayerWin() {
     for (var i = 0; i < firePlayer.moves.length; i++) {
         if (firePlayer.moves[i].className.includes("box box1", "box box2", "box box3" ||
                                                    "box box1", "box box4", "box box7" ||
@@ -112,7 +113,7 @@ function firePlayerWin() {
                                                    "box box3", "box box5", "box box7" ||
                                                    "box box4", "box box5", "box box6" ||
                                                    "box box7", "box box8", "box box9")) {
-            firePlayer.wins ++
+            firePlayer.wins = firePlayer.wins +1
             return firePlayer
         } else {
             return 'draw!'
@@ -120,7 +121,7 @@ function firePlayerWin() {
     }
 }
 
-function waterPlayerWin() {
+function checkWaterPlayerWin() {
     for (var i = 0; i < waterPlayer.moves.length; i++) {
         if (waterPlayer.moves[i].className.includes("box box1", "box box2", "box box3" ||
                                                     "box box1", "box box4", "box box7" ||
@@ -130,14 +131,13 @@ function waterPlayerWin() {
                                                     "box box3", "box box5", "box box7" ||
                                                     "box box4", "box box5", "box box6" ||
                                                     "box box7", "box box8", "box box9")) {
-            waterPlayer.wins ++
+            waterPlayer.wins = waterPlayer.wins +1
             return waterPlayer
         } else {
             return 'draw!'
         }
     }
 }
-
 
 // function increaseWins(firePlayer) {
 //      firePlayer.wins ++
