@@ -4,6 +4,9 @@
 var turnBanner = document.querySelector('.announcements');
 var boxes = document.querySelectorAll('.box');
 var boardGrid = document.querySelector('.board-grid');
+var firePlayerScore = document.querySelector('.fire-player-wins');
+var waterPlayerScore = document.querySelector('.water-player-wins')
+
 
 // Event listeners
 
@@ -14,16 +17,23 @@ boardGrid.addEventListener('click', function(event) {
         return
     }  
         selectedBox = selectBox(event);
-        addMoves(selectedBox);
-        displayToken();
+        addMoves(selectedBox); 
+        displayToken(event);
 });
 
 var firePlayer = createPlayer('fire', 1, '🔥', 0, true);
 var waterPlayer = createPlayer('water', 2, '💧', 0, false);
-
 var players = [firePlayer, waterPlayer];
 
 var selectedBox;
+var winCombos = [['1', '2', '3'], 
+                 ['1', '4', '7'], 
+                 ['1', '5', '9'], 
+                 ['2', '5', '8'], 
+                 ['3', '6', '9'], 
+                 ['3', '5', '7'], 
+                 ['4', '5', '6'], 
+                 ['7', '8', '9']];
 
 
 //functions
@@ -41,40 +51,14 @@ function createPlayer(name, id, token, wins, turn) {
 
 
 // Function(s) to display the game board and user data
-function stopRepeats(box) {
-    for (var i = 0; i < players.length; i++) {
-    if (players[i].moves.includes(box)) {
-        return false
-    }
-        return true
-    } 
-}
-
-function selectBox(event) {
-    var eventTargetClass = event.target.className
-    for (var i = 0; i < boxes.length; i++) {
-        if(boxes[i].className === eventTargetClass) {
-           return boxes[i]
-        }
-    }    
-}
-
-function addMoves(box) {
-    for (var i = 0; i < players.length; i++) {
-        players[i].moves.push(box)
-    }
-}
-
-function displayToken() {
+function displayTurn() {
     for (var i = 0; i < players.length; i++) {
         if (players[i].turn) {
-            selectedBox.innerHTML += 
-            `${players[i].token}`
-        }
-    }   
-    changeTurn(players);
+            turnBanner.innerHTML = `It\'s ${players[i].token}\'s turn!`
+        } 
+    }    
 }
-
+ 
 function changeTurn(players) {
     for (var i = 0; i < players.length; i++) {
         players[i].turn = !players[i].turn;
@@ -82,25 +66,84 @@ function changeTurn(players) {
     displayTurn();
 }
 
-function displayTurn() {
+function displayToken(event) {
+    var box = event.target
     for (var i = 0; i < players.length; i++) {
         if (players[i].turn) {
-            turnBanner.innerHTML = 
-            `It\'s ${players[i].token}\'s turn!`
-        } 
+            box.innerHTML += 
+            `${players[i].token}`
+        }
+    }   
+    if (checkForWin()) {
+            return;
+    }
+    changeTurn(players);
+}
+
+function stopRepeats(box) {
+    for (var i = 0; i < players.length; i++) {
+        if (players[0].moves.includes(box) || players[1].moves.includes(box)) {
+            return false
+        }
+            return true
+    } 
+}
+
+function selectBox(event) {
+    var eventTargetId = event.target.id
+    for (var i = 0; i < boxes.length; i++) {
+        if(boxes[i].id === eventTargetId) {
+           return boxes[i].getAttribute('id')
+        }
     }    
 }
- 
+
+function addMoves(box) {
+    for (var i = 0; i < players.length; i++) {
+        if (players[i].turn) {
+            players[i].moves.push(box)
+        }
+    }
+}
+
+function checkForWin() {
+    for (var i = 0; i < winCombos.length; i++) {
+        var fireWin = winCombos[i].every(function(position) {
+            return (firePlayer.moves.includes(position))
+        })
+        var waterWin = winCombos[i].every(function(position) {
+            return (waterPlayer.moves.includes(position))
+        }) 
+        if(fireWin) {
+            firePlayer.wins += 1  
+            displayFirePlayerWin() 
+            return true
+        } else if (waterWin) {
+            waterPlayer.wins += 1
+            displayWaterPlayerWin()
+            return true
+        } 
+    } 
+        return false
+}
+
+
+function displayFirePlayerWin() {
+    turnBanner.innerHTML = `${firePlayer.token} Fire wins!`
+    firePlayerScore.innerHTML += ` ${firePlayer.wins}`
+} 
+//updateing banner and displaying win count
+function displayWaterPlayerWin() {
+    turnBanner.innerHTML = `${waterPlayer.token} Water wins!`
+    waterPlayerScore.innerHTML += ` ${waterPlayer.wins}`
+}
+//updateing banner and displaying win count
+
 
 
 // A function that creates the objects that store each players’ informations - properties should include: id (ex: 'one'), token (ex: '⭐️'), wins (ex: 0)
 
-function increaseWins(players) {
-   for (var i = 0; i < players.length; i++) {
-    players[i].wins ++
-   }
-    return players;
-}
+
 
 // A function called increaseWins - increases the count of a player’s wins (should work for either player)
 

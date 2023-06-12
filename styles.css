@@ -34,13 +34,13 @@ main {
 .water {
     background-image: linear-gradient(#002D62, #0039a6, #1F75FE, #0CAFFF, #00BFFF);
 }
-.player-one, 
-.player-two {
+.fire-player, 
+.water-player {
     color: white;
 }
 
-.player1-wins, 
-.player2-wins {
+.fire-player-wins, 
+.water-player-wins {
     border: 2px solid black;
     height: 12dvh;
     background:transparent;
