@@ -70,11 +70,11 @@ function displayToken(event) {
     var box = event.target
     for (var i = 0; i < players.length; i++) {
         if (players[i].turn) {
-            box.innerHTML += 
-            `${players[i].token}`
+            box.innerHTML += `${players[i].token}`
         }
     }   
     if (checkForWin()) {
+            resetGame();
             return;
     }
     changeTurn(players);
@@ -150,10 +150,17 @@ function checkForDraw() {
     return false;
 }
 
-
-// A function that detects when a game is a draw (no one has won)
-
-// A function that resets the game board’s data to begin a new game
+function resetGame() {
+    for (var i = 0; i < players.length; i++) {
+        players[i].moves = [];
+    }
+    setTimeout(function() {
+        for (var i = 0; i < boxes.length; i++) {
+            boxes[i].innerHTML = '';
+        }
+        changeTurn(players);
+    }, 3000);
+}
 
 
 
