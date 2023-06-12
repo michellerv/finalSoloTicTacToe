@@ -54,8 +54,7 @@ function createPlayer(name, id, token, wins, turn) {
 function displayTurn() {
     for (var i = 0; i < players.length; i++) {
         if (players[i].turn) {
-            turnBanner.innerHTML = 
-            `It\'s ${players[i].token}\'s turn!`
+            turnBanner.innerHTML = `It\'s ${players[i].token}\'s turn!`
         } 
     }    
 }
@@ -75,7 +74,9 @@ function displayToken(event) {
             `${players[i].token}`
         }
     }   
-    checkForWin()
+    if (checkForWin()) {
+            return;
+    }
     changeTurn(players);
 }
 
@@ -128,11 +129,13 @@ function checkForWin() {
 
 
 function displayFirePlayerWin() {
-
+    turnBanner.innerHTML = `${firePlayer.token} Fire wins!`
+    firePlayerScore.innerHTML += ` ${firePlayer.wins}`
 } 
 //updateing banner and displaying win count
 function displayWaterPlayerWin() {
-
+    turnBanner.innerHTML = `${waterPlayer.token} Water wins!`
+    waterPlayerScore.innerHTML += ` ${waterPlayer.wins}`
 }
 //updateing banner and displaying win count
 
