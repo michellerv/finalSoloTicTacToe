@@ -54,7 +54,7 @@ function createPlayer(name, id, token, wins, turn) {
 function displayTurn() {
     for (var i = 0; i < players.length; i++) {
         if (players[i].turn) {
-            turnBanner.innerHTML = `It\'s ${players[i].token}\'s turn!`
+            turnBanner.innerHTML = `It's ${players[i].token}'s turn!`
         } 
     }    
 }
@@ -115,16 +115,19 @@ function checkForWin() {
             return (waterPlayer.moves.includes(position))
         }) 
         if(fireWin) {
-            firePlayer.wins += 1  
-            displayFirePlayerWin() 
-            return true
+            firePlayer.wins += 1;  
+            displayFirePlayerWin();
+            return true;
         } else if (waterWin) {
-            waterPlayer.wins += 1
-            displayWaterPlayerWin()
-            return true
-        } 
-    } 
-        return false
+            waterPlayer.wins += 1;
+            displayWaterPlayerWin();
+            return true;
+        }   
+    }   
+    if(checkForDraw()) {
+        return true;
+    }   
+    return false;        
 }
 
 
@@ -138,6 +141,14 @@ function displayWaterPlayerWin() {
     waterPlayerScore.innerHTML += ` ${waterPlayer.wins}`
 }
 
+function checkForDraw() {
+    var totalMoves = firePlayer.moves.length + waterPlayer.moves.length;
+    if (totalMoves === boxes.length) {
+        turnBanner.innerHTML = `It's a draw ${firePlayer.token} ${waterPlayer.token} !`;
+        return true;
+    }
+    return false;
+}
 
 
 // A function that detects when a game is a draw (no one has won)
