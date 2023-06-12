@@ -3,28 +3,28 @@
 }
 
 body {
-    display: flex;
     margin: 0px;
     height: 100dvh;
     width: 95dvw;
+    display: flex;
     flex-direction: column;
 }
 
 main {
     height: 100%;
-    width: 100vw;
+    width: 100dvw;  
     display: flex;
     flex-direction: row;
 }
 
 .sidebar {
+    width: 30%;
     padding-top: 6dvh;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
-    width: 30%;
 }
 
 .fire {
@@ -34,6 +34,7 @@ main {
 .water {
     background-image: linear-gradient(#002D62, #0039a6, #1F75FE, #0CAFFF, #00BFFF);
 }
+
 .fire-player, 
 .water-player {
     color: white;
@@ -41,17 +42,16 @@ main {
 
 .fire-player-wins, 
 .water-player-wins {
-    border: 2px solid black;
     height: 12dvh;
     background:transparent;
     color:white;
 }
 
 .game-board {
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    height: 100%;
     width: 40%;   
 }
 
@@ -59,11 +59,11 @@ main {
     background-image: url(assets/istockphoto-457148881-612x612.jpg);
     background-size:cover;
     transform: scaleX(-1);
-    height: 50%;
     display: flex;
     align-items: flex-start;
     justify-content: center;
     padding-top: 8dvh;
+    height: 50%;
 }
 
 h1 {
@@ -77,10 +77,10 @@ h1 {
 }
 
 .board-grid {
-    height: 70%;
     display: grid;
     grid-template-columns: repeat(3, 3fr);
     grid-gap: 0px;
+    height: 70%;
     padding: 40px;
     padding-left: 15dvh;
     padding-right: 15dvh;
@@ -93,6 +93,7 @@ h1 {
     justify-content: center;
     align-items: center;
     font-size: 4dvh;
+    height: 16dvh;
 }
 
 .box2, 
