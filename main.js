@@ -107,7 +107,7 @@ function checkForWin() {
         var waterWin = winCombos[i].every(function(position) {
             return (waterPlayer.moves.includes(position));
         }) 
-        if(fireWin) {
+        if (fireWin) {
             firePlayer.wins += 1;  
             displayFirePlayerWin();
             return true;
