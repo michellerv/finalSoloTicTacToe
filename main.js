@@ -1,20 +1,17 @@
-// Your DOM related JavaScript will include:
-// Query selectors
+//Query selectors
 
 var turnBanner = document.querySelector('.announcements');
 var boxes = document.querySelectorAll('.box');
 var boardGrid = document.querySelector('.board-grid');
 var firePlayerScore = document.querySelector('.fire-player-wins');
-var waterPlayerScore = document.querySelector('.water-player-wins')
+var waterPlayerScore = document.querySelector('.water-player-wins');
 
-
-// Event listeners
-
+//Event listeners
 
 window.addEventListener('load', displayTurn);
 boardGrid.addEventListener('click', function(event) {
     if (!stopRepeats(selectBox(event))) {
-        return
+        return;
     }  
         selectedBox = selectBox(event);
         addMoves(selectedBox); 
@@ -24,7 +21,6 @@ boardGrid.addEventListener('click', function(event) {
 var firePlayer = createPlayer('fire', 1, '🔥', 0, true);
 var waterPlayer = createPlayer('water', 2, '💧', 0, false);
 var players = [firePlayer, waterPlayer];
-
 var selectedBox;
 var winCombos = [['1', '2', '3'], 
                  ['1', '4', '7'], 
@@ -35,8 +31,8 @@ var winCombos = [['1', '2', '3'],
                  ['4', '5', '6'], 
                  ['7', '8', '9']];
 
+//Functions
 
-//functions
 function createPlayer(name, id, token, wins, turn) {
     return {
         name: name,
@@ -48,13 +44,10 @@ function createPlayer(name, id, token, wins, turn) {
     }
 }
 
-
-
-// Function(s) to display the game board and user data
 function displayTurn() {
     for (var i = 0; i < players.length; i++) {
         if (players[i].turn) {
-            turnBanner.innerHTML = `It's ${players[i].token}'s turn!`
+            turnBanner.innerHTML = `It's ${players[i].token}'s turn!`;
         } 
     }    
 }
@@ -70,7 +63,7 @@ function displayToken(event) {
     var box = event.target
     for (var i = 0; i < players.length; i++) {
         if (players[i].turn) {
-            box.innerHTML += `${players[i].token}`
+            box.innerHTML += `${players[i].token}`;
         }
     }   
     if (checkForWin()) {
@@ -83,9 +76,9 @@ function displayToken(event) {
 function stopRepeats(box) {
     for (var i = 0; i < players.length; i++) {
         if (players[0].moves.includes(box) || players[1].moves.includes(box)) {
-            return false
+            return false;
         }
-            return true
+            return true;
     } 
 }
 
@@ -93,7 +86,7 @@ function selectBox(event) {
     var eventTargetId = event.target.id
     for (var i = 0; i < boxes.length; i++) {
         if(boxes[i].id === eventTargetId) {
-           return boxes[i].getAttribute('id')
+           return boxes[i].getAttribute('id');
         }
     }    
 }
@@ -101,7 +94,7 @@ function selectBox(event) {
 function addMoves(box) {
     for (var i = 0; i < players.length; i++) {
         if (players[i].turn) {
-            players[i].moves.push(box)
+            players[i].moves.push(box);
         }
     }
 }
@@ -109,10 +102,10 @@ function addMoves(box) {
 function checkForWin() {
     for (var i = 0; i < winCombos.length; i++) {
         var fireWin = winCombos[i].every(function(position) {
-            return (firePlayer.moves.includes(position))
+            return (firePlayer.moves.includes(position));
         })
         var waterWin = winCombos[i].every(function(position) {
-            return (waterPlayer.moves.includes(position))
+            return (waterPlayer.moves.includes(position));
         }) 
         if(fireWin) {
             firePlayer.wins += 1;  
@@ -130,15 +123,14 @@ function checkForWin() {
     return false;        
 }
 
-
 function displayFirePlayerWin() {
-    turnBanner.innerHTML = `${firePlayer.token} Fire wins!`
-    firePlayerScore.innerHTML += ` ${firePlayer.wins}`
+    turnBanner.innerHTML = `${firePlayer.token} Fire wins!`;
+    firePlayerScore.innerHTML += ` ${firePlayer.wins}`;
 } 
 
 function displayWaterPlayerWin() {
-    turnBanner.innerHTML = `${waterPlayer.token} Water wins!`
-    waterPlayerScore.innerHTML += ` ${waterPlayer.wins}`
+    turnBanner.innerHTML = `${waterPlayer.token} Water wins!`;
+    waterPlayerScore.innerHTML += ` ${waterPlayer.wins}`;
 }
 
 function checkForDraw() {
