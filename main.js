@@ -4,6 +4,9 @@
 var turnBanner = document.querySelector('.announcements');
 var boxes = document.querySelectorAll('.box');
 var boardGrid = document.querySelector('.board-grid');
+var firePlayerScore = document.querySelector('.fire-player-wins');
+var waterPlayerScore = document.querySelector('.water-player-wins')
+
 
 // Event listeners
 
@@ -24,13 +27,13 @@ var players = [firePlayer, waterPlayer];
 
 var selectedBox;
 var winCombos = [['1', '2', '3'], 
-                 ['4', '5', '6'], 
-                 ['7', '8', '9'], 
-                 ['1', '5', '9'], 
-                 ['3', '5', '7'], 
                  ['1', '4', '7'], 
+                 ['1', '5', '9'], 
                  ['2', '5', '8'], 
-                 ['3', '6', '9']];
+                 ['3', '6', '9'], 
+                 ['3', '5', '7'], 
+                 ['4', '5', '6'], 
+                 ['7', '8', '9']];
 
 
 //functions
@@ -112,11 +115,11 @@ function checkForWin() {
         }) 
         if(fireWin) {
             firePlayer.wins += 1  
-            //displayFirePlayerWin() 
+            displayFirePlayerWin() 
             return true
         } else if (waterWin) {
             waterPlayer.wins += 1
-            //displayWaterPlayerWin()
+            displayWaterPlayerWin()
             return true
         } 
     } 
@@ -124,9 +127,13 @@ function checkForWin() {
 }
 
 
-//displayFirePlayerWin() 
+function displayFirePlayerWin() {
+
+} 
 //updateing banner and displaying win count
-//displayWaterPlayerWin()
+function displayWaterPlayerWin() {
+
+}
 //updateing banner and displaying win count
 
 
