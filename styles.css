@@ -42,7 +42,6 @@ main {
 
 .fire-player-wins, 
 .water-player-wins {
-    border: 2px solid black;
     height: 12dvh;
     background:transparent;
     color:white;
