@@ -34,8 +34,8 @@
 - Enjoy the game. 
 
 ### Preview of App:
-- 
 
+![Elemental tic tac toe](https://github.com/michellerv/finalSoloTicTacToe/assets/130321224/f46ff148-f6ca-4433-b570-42e1071bc871)
 
 ### Challenges & Wins
 - The biggest challenge and win for me with this project was testing my confidence in my abilities. I proved to myself with this project that I could have a completely different data model, yet still be able to communicate my ideas, and ask for help when needed. I am also very capable of finding and fixing bugs on my own, because I understand my code. 
