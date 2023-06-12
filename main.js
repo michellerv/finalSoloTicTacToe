@@ -132,63 +132,13 @@ function displayFirePlayerWin() {
     turnBanner.innerHTML = `${firePlayer.token} Fire wins!`
     firePlayerScore.innerHTML += ` ${firePlayer.wins}`
 } 
-//updateing banner and displaying win count
+
 function displayWaterPlayerWin() {
     turnBanner.innerHTML = `${waterPlayer.token} Water wins!`
     waterPlayerScore.innerHTML += ` ${waterPlayer.wins}`
 }
-//updateing banner and displaying win count
 
 
-
-// A function that creates the objects that store each players’ informations - properties should include: id (ex: 'one'), token (ex: '⭐️'), wins (ex: 0)
-
-
-
-// A function called increaseWins - increases the count of a player’s wins (should work for either player)
-
-//Use?
-// function createGameBoard() {
-//     for (var i = 1; i < 10; i++) {
-//         gameBoardBoxes.push({
-//             boxNum: i,
-//             occuppied: false,
-//         })
-//     }
-// }
-
-
-
-// A function that keeps track of the data for the game board
-
-
-
-// A function that keeps track of which player’s turn it currently is
-
-// function playerWin(gameBoardBoxes) {
-//     for (var i = 0; i <  gameBoardBoxes.length; i++) {
-//         if (gameBoardBoxes[0,1,2].occupied) {
-//             //that player wins- how to connect game board to player
-//         } else if (gameBoardBoxes[3, 4, 5].occupied) {
-//             // ''
-//         } else if (gameBoardBoxes[6, 7, 8].occupied) {
-//             // ''
-//         } else if (gameBoardBoxes[0, 4, 8].occupied) {
-//             //  ''
-//         } else if (gameBoardBoxes[2, 4, 6].occupied) {
-//             //''
-//         } else if (gameBoardBoxes[0, 3, 6].occupied) {
-//             // ''
-//         } else if (gameBoardBoxes[1, 4, 7].occupied) {
-//             // ''
-//         } else if (gameBoardBoxes[2, 5, 8].occupied) {
-//             // ''
-//         }
-//     }
-// }
-
-
-// A function that checks the game board data for win conditions
 
 // A function that detects when a game is a draw (no one has won)
 
