@@ -5,12 +5,13 @@ var boxes = document.querySelectorAll('.box');
 var boardGrid = document.querySelector('.board-grid');
 var firePlayerScore = document.querySelector('.fire-player-wins');
 var waterPlayerScore = document.querySelector('.water-player-wins');
+var afterWin = false;
 
 //Event listeners
 
 window.addEventListener('load', displayTurn);
 boardGrid.addEventListener('click', function(event) {
-    if (!stopRepeats(selectBox(event))) {
+    if (!stopRepeats(selectBox(event)) || afterWin === true) {
         return;
     }  
         selectedBox = selectBox(event);
@@ -107,13 +108,15 @@ function checkForWin() {
         var waterWin = winCombos[i].every(function(position) {
             return (waterPlayer.moves.includes(position));
         }) 
-        if(fireWin) {
+        if (fireWin) {
             firePlayer.wins += 1;  
             displayFirePlayerWin();
+            afterWin = true;
             return true;
         } else if (waterWin) {
             waterPlayer.wins += 1;
             displayWaterPlayerWin();
+            afterWin = true; 
             return true;
         }   
     }   
