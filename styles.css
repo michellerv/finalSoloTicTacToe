@@ -42,7 +42,7 @@ main {
 
 .fire-player-wins, 
 .water-player-wins {
-    height: 12dvh;
+    height: 14dvh;
     background:transparent;
     color:white;
 }
