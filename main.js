@@ -128,12 +128,12 @@ function checkForWin() {
 
 function displayFirePlayerWin() {
     turnBanner.innerHTML = `${firePlayer.token} Fire wins!`;
-    firePlayerScore.innerHTML += ` ${firePlayer.wins}`;
+    firePlayerScore.innerHTML = ` ${firePlayer.wins}`;
 } 
 
 function displayWaterPlayerWin() {
     turnBanner.innerHTML = `${waterPlayer.token} Water wins!`;
-    waterPlayerScore.innerHTML += ` ${waterPlayer.wins}`;
+    waterPlayerScore.innerHTML = ` ${waterPlayer.wins}`;
 }
 
 function checkForDraw() {
@@ -146,6 +146,9 @@ function checkForDraw() {
 }
 
 function resetGame() {
+    players[0].turn = !players[0].turn;
+    players[1].turn = !players[1].turn;
+
     for (var i = 0; i < players.length; i++) {
         players[i].moves = [];
     }
@@ -154,7 +157,8 @@ function resetGame() {
         for (var i = 0; i < boxes.length; i++) {
             boxes[i].innerHTML = '';
         }
-        changeTurn(players);
+        displayTurn();
+        // changeTurn(players);
     }, 3000);
 }
 
