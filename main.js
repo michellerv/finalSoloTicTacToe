@@ -129,13 +129,13 @@ function checkForWin() {
 function displayFirePlayerWin() {
     turnBanner.innerHTML = `${firePlayer.token} Fire wins!`;
     firePlayerScore.innerHTML = ` ${firePlayer.wins}`;
-    setTimeout(resetGame, 3000)
+    setTimeout(resetGame, 3000);
 } 
 
 function displayWaterPlayerWin() {
     turnBanner.innerHTML = `${waterPlayer.token} Water wins!`;
     waterPlayerScore.innerHTML = ` ${waterPlayer.wins}`;
-    setTimeout(resetGame, 3000)
+    setTimeout(resetGame, 3000);
 }
 
 function checkForDraw() {
@@ -143,7 +143,7 @@ function checkForDraw() {
     if (totalMoves === boxes.length) {
         turnBanner.innerHTML = `It's a draw ${firePlayer.token} ${waterPlayer.token} !`;
         afterWin = true;
-        setTimeout(resetGame, 3000)
+        setTimeout(resetGame, 3000);
         return true;
     }
     return false;
@@ -154,24 +154,24 @@ function resetGame() {
         players[i].moves = [];
     }
     for (var i = 0; i < boxes.length; i++) {
-    boxes[i].innerHTML = ''
+        boxes[i].innerHTML = '';
     }
-    afterWin = false
-   changeTurnAfterGame();
-   displayTurn();
+        afterWin = false
+        changeTurnAfterGame();
+        displayTurn();
 }
 
 function changeTurnAfterGame() {
     for(var i = 0; i < players.length; i++) {
         if(players[i].startsGame) {
-            players[i].startsGame = false
-            players[i].turn = false
+            players[i].startsGame = false;
+            players[i].turn = false;
         } else {
-            players[i].startsGame = true
-            players[i].turn = true
+            players[i].startsGame = true;
+            players[i].turn = true;
         }
     }
-    return players  
+    return players;
 }   
     
 
