@@ -19,8 +19,8 @@ boardGrid.addEventListener('click', function(event) {
         displayToken(event);
 });
 
-var firePlayer = createPlayer('fire', 1, '🔥', 0, true);
-var waterPlayer = createPlayer('water', 2, '💧', 0, false);
+var firePlayer = createPlayer('fire', 1, '🔥', 0, true, true);
+var waterPlayer = createPlayer('water', 2, '💧', 0, false, false);
 var players = [firePlayer, waterPlayer];
 var selectedBox;
 var winCombos = [['1', '2', '3'], 
@@ -34,13 +34,14 @@ var winCombos = [['1', '2', '3'],
 
 //Functions
 
-function createPlayer(name, id, token, wins, turn) {
+function createPlayer(name, id, token, wins, turn, startsGame) {
     return {
         name: name,
         id: id,
         token: token,
         wins: wins,
         turn: turn,
+        startsGame: startsGame,
         moves: []
     }
 }
@@ -68,7 +69,6 @@ function displayToken(event) {
         }
     }   
     if (checkForWin()) {
-            resetGame();
             return;
     }
     changeTurn(players);
@@ -129,40 +129,53 @@ function checkForWin() {
 function displayFirePlayerWin() {
     turnBanner.innerHTML = `${firePlayer.token} Fire wins!`;
     firePlayerScore.innerHTML = ` ${firePlayer.wins}`;
+    setTimeout(resetGame, 3000)
 } 
 
 function displayWaterPlayerWin() {
     turnBanner.innerHTML = `${waterPlayer.token} Water wins!`;
     waterPlayerScore.innerHTML = ` ${waterPlayer.wins}`;
+    setTimeout(resetGame, 3000)
 }
 
 function checkForDraw() {
     var totalMoves = firePlayer.moves.length + waterPlayer.moves.length;
     if (totalMoves === boxes.length) {
         turnBanner.innerHTML = `It's a draw ${firePlayer.token} ${waterPlayer.token} !`;
+        afterWin = true;
+        setTimeout(resetGame, 3000)
         return true;
     }
     return false;
 }
 
 function resetGame() {
-    players[0].turn = !players[0].turn;
-    players[1].turn = !players[1].turn;
-
     for (var i = 0; i < players.length; i++) {
         players[i].moves = [];
     }
+    for (var i = 0; i < boxes.length; i++) {
+    boxes[i].innerHTML = ''
+    }
     afterWin = false
-    setTimeout(function() {
-        for (var i = 0; i < boxes.length; i++) {
-            boxes[i].innerHTML = '';
-        }
-        displayTurn();
-        // changeTurn(players);
-    }, 3000);
+   changeTurnAfterGame();
+   displayTurn();
 }
 
+function changeTurnAfterGame() {
+    for(var i = 0; i < players.length; i++) {
+        if(players[i].startsGame) {
+            players[i].startsGame = false
+            players[i].turn = false
+        } else {
+            players[i].startsGame = true
+            players[i].turn = true
+        }
+    }
+    return players  
+}   
+    
 
+   
 
 
 
