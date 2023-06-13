@@ -38,6 +38,7 @@ main {
 .fire-player, 
 .water-player {
     color: white;
+    font-size: 5dvh;
 }
 
 .fire-player-wins, 
@@ -45,6 +46,7 @@ main {
     height: 14dvh;
     background:transparent;
     color:white;
+    font-size: 4dvh;
 }
 
 .game-board {
