@@ -149,6 +149,7 @@ function resetGame() {
     for (var i = 0; i < players.length; i++) {
         players[i].moves = [];
     }
+    afterWin = false
     setTimeout(function() {
         for (var i = 0; i < boxes.length; i++) {
             boxes[i].innerHTML = '';
