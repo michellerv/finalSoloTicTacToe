@@ -52,7 +52,7 @@ function displayTurn() {
         } 
     }    
 }
- 
+
 function changeTurn(players) {
     for (var i = 0; i < players.length; i++) {
         players[i].turn = !players[i].turn;
@@ -157,6 +157,13 @@ function resetGame() {
         changeTurn(players);
     }, 3000);
 }
+
+
+
+
+
+
+
 
 
 
