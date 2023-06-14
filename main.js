@@ -11,7 +11,7 @@ var afterWin = false;
 
 window.addEventListener('load', displayTurn);
 boardGrid.addEventListener('click', function(event) {
-    if (!stopRepeats(selectBox(event)) || afterWin === true) {
+    if (!stopRepeats(selectBox(event)) || afterWin === true || event.target.className === 'board-grid') {
         return;
     }  
         selectedBox = selectBox(event);
